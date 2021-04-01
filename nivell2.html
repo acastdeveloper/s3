@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivell 2</title>
+    <style>
+        #inputa,
+        #inputb,
+        #resultbutton {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../">Tornar</a>
+    <hr>
+
+    <h1>Calculadora</h1>
+    <p id="operacioa">
+        Indica quina operació vols realitzar:
+        <select name="opera" id="operacio">
+            <option value="">Operació</option>
+            <option value="suma">Suma</option>
+            <option value="resta">Resta</option>
+            <option value="multiplica">Multiplicació</option>
+            <option value="divideix">Divideix</option>
+        </select>
+    </p>
+
+    <p id="inputa">Escriu un número:
+        <input type="number" name="a" id="a" placeholder="Escriu un número"></p>
+
+    <p id="inputb">Escriu un altre número:
+        <input type="number" name="b" id="b" placeholder="Escriu un número"></p>
+
+        <button id="resultbutton">Resultat:</button>
+
+        <hr>
+        <p id="output"></p>
+
+
+    <script src="./js/nivell2.js"></script>
+</body>
+
+</html>

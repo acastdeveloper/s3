@@ -1,0 +1,32 @@
+/** COLOR */
+
+.col {
+    background: #{$color1};
+    &:active {
+        background: #{$color1h};
+    }
+}
+
+.ope {
+    color:white;
+    background: #{$color2};
+    &:active {
+        background: #{$color2h};
+    }
+}
+
+.col--del {
+    color:white;
+    background: #{$color4};
+    &:active {
+        background: #{$color4h};
+    }
+}
+
+.col--equ {
+    color:white;
+    background: #{$color3};
+    &:active {
+    background: #{$color3h};
+}
+}

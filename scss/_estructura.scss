@@ -1,0 +1,60 @@
+/** ESTRUCTURA */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cols50>.col {
+    flex-basis: 50%;
+}
+
+.cols50>.col {
+    flex-basis: 50%;
+}
+
+.cols25>.col {
+    flex-basis: 25%;
+}
+
+.col {
+flex-grow: 1;
+flex-shrink: 1;
+text-align: center;
+}
+
+#pantalla {
+    flex-basis: 100%;
+    align-self: center;
+    padding: 2rem 1rem;
+}
+
+button.col {
+    padding: 3vh 2vh;
+    margin: 1vh;
+}
+
+
+#teclat {
+    margin: auto;
+    min-width: 320px;
+    max-width: 575px;
+}

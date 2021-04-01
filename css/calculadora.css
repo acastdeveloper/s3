@@ -1,0 +1,115 @@
+/** ROOT */
+:root {
+  --font-mono:Roboto Mono, monospace;
+}
+
+/** TIPOGRAFIA */
+#teclat, #teclat .row > button {
+  font-family: "Roboto Mono", monospace;
+  font-size: 5vh;
+}
+
+#pantalla {
+  font-size: 7vh;
+  text-align: right;
+}
+
+/** COLOR */
+.col {
+  background: #a5b1c2;
+}
+.col:active {
+  background: #d1d8e0;
+}
+
+.ope {
+  color: white;
+  background: #4b6584;
+}
+.ope:active {
+  background: #778ca3;
+}
+
+.col--del {
+  color: white;
+  background: #eb3b5a;
+}
+.col--del:active {
+  background: #fc5c65;
+}
+
+.col--equ {
+  color: white;
+  background: #20bf6b;
+}
+.col--equ:active {
+  background: #26de81;
+}
+
+/** SHAPE */
+button {
+  border: 0;
+  border-radius: 1rem;
+  outline: none;
+}
+
+/** ESTRUCTURA */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cols50 > .col {
+  flex-basis: 50%;
+}
+
+.cols50 > .col {
+  flex-basis: 50%;
+}
+
+.cols25 > .col {
+  flex-basis: 25%;
+}
+
+.col {
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+}
+
+#pantalla {
+  flex-basis: 100%;
+  align-self: center;
+  padding: 2rem 1rem;
+}
+
+button.col {
+  padding: 3vh 2vh;
+  margin: 1vh;
+}
+
+#teclat {
+  margin: auto;
+  min-width: 320px;
+  max-width: 575px;
+}
+
+/*# sourceMappingURL=calculadora.css.map */
