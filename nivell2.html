@@ -9,7 +9,8 @@
     <style>
         #inputa,
         #inputb,
-        #resultbutton {
+        #resultbutton,
+        #reset {
             display: none;
         }
     </style>
@@ -24,10 +25,10 @@
         Indica quina operació vols realitzar:
         <select name="opera" id="operacio">
             <option value="">Operació</option>
-            <option value="suma">Suma</option>
-            <option value="resta">Resta</option>
-            <option value="multiplica">Multiplicació</option>
-            <option value="divideix">Divideix</option>
+            <option value="+">Suma</option>
+            <option value="-">Resta</option>
+            <option value="*">Multiplicació</option>
+            <option value="/">Divideix</option>
         </select>
     </p>
 
@@ -37,10 +38,11 @@
     <p id="inputb">Escriu un altre número:
         <input type="number" name="b" id="b" placeholder="Escriu un número"></p>
 
-        <button id="resultbutton">Resultat:</button>
+    <button id="resultbutton">Resoldre</button> <br>
+    <button id="reset">Netejar</button>
 
-        <hr>
-        <p id="output"></p>
+    <hr>
+    <p id="output"></p>
 
 
     <script src="./js/nivell2.js"></script>

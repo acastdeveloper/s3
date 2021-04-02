@@ -1,55 +1,60 @@
-// Numeric keys
-const keyNum = document.getElementsByClassName("coln");
-// Operator keys
-const keyOpe = document.getElementsByClassName("ope");
-// Decimal key
-const keyDec = document.getElementById("deci");
-// Screen html object
-let screenObj = document.getElementById("pantalla");
-let subScreenObj = document.getElementById("subpantalla");
-let operObj = document.getElementById("oper");
-let ecuObj = document.getElementById("equ");
-let cleanObj = document.getElementById("clean");
-let backObj = document.getElementById("backspace");
-let invObj = document.getElementById("inv");
+// HTML OBJECTS
+const keyNumH = document.getElementsByClassName("coln");
+const keyOpeH = document.getElementsByClassName("ope");
+const keyDecH = document.getElementById("deci");
+const screenH = document.getElementById("pantalla");
+const subScreenH = document.getElementById("subpantalla");
+const operH = document.getElementById("oper");
+const ecuH = document.getElementById("equ");
+const cleanH = document.getElementById("clean");
+const backH = document.getElementById("backspace");
+const invH = document.getElementById("inv");
+
 // Annotate function
 function annotate(what) {
-    let screenVal = screenObj.innerHTML;
+    let screenVal = screenH.innerHTML;
+    /*Avaluates HTML content of screenH when is invoked*/
 
     if (screenVal === "0") {
-        screenObj.innerHTML = what;
+        screenH.innerHTML = what;
+        /* To avoid that a not decimal number starts with 0,
+        content is replaced by what */
     } else {
-        screenObj.innerHTML = screenVal + what;
+        screenH.innerHTML = screenVal + what;
+        /* otherwise "what" parameter is chained at the end */
     }
 }
 
-// Adding dot
+// Adding dot function
 function addDot() {
-    let screenVal = screenObj.innerHTML;
+    let screenVal = screenH.innerHTML;
+    /* Avaluates content of screenH when this function is invoked */
     if (screenVal.indexOf(".") == -1) {
-        console.log("No hi ha .");
-        screenObj.innerHTML = screenVal + ".";
+        /* Only if it doesn't exist a dot inside the string ... */
+        screenH.innerHTML = screenVal + ".";
+        /* ... will add a dot at the end */
     }
 }
 
-// Preserve 1st annotation
-function preservAnot(opP) {
-    console.log("hooo");
-    let screenVal = screenObj.innerHTML;
-    subScreenObj.innerHTML = screenVal;
-    screenObj.innerHTML = 0;
-    operObj.innerHTML = opP;
+// Preserve 1st annotation inside subScreenH
+function preservOpe(opP) {
+    let screenVal = screenH.innerHTML;
+    /* Avaluates content of screenH when this function is invoked */
+    subScreenH.innerHTML = screenVal;
+    /* Makes a copy inside subScreenH */
+    screenH.innerHTML = 0;
+    /* Reset screenH content */
+    operH.innerHTML = opP;
+    /* Annotates also operator inside operH */
 }
 
-
-// CALCULADORA
-
+// CALCULATOR
 function calculadora(operacio, a, b) {
     let r = 0;
 
     switch (operacio) {
         case "+":
-            r = parseInt(a + b);
+            r = a+b;
             break;
         case "-":
             r = a - b;
@@ -68,67 +73,80 @@ function calculadora(operacio, a, b) {
     return r;
 }
 
+// It reads all the annotations and invoke to calculadora()
 function resultat() {
-    let o = operObj.innerHTML;
-    let a = Number(subScreenObj.innerHTML);
-    let b = Number(screenObj.innerHTML);
+    let o = operH.innerHTML;
+    let a = Number(subScreenH.innerHTML);
+    let b = Number(screenH.innerHTML);
+    /* It avaluates all the content keeped inside tags and asign to these variables */
 
-    screenObj.innerHTML = calculadora(o, a, b);
-    subScreenObj.innerHTML = "";
-    operObj.innerHTML = "";
+    screenH.innerHTML = calculadora(o, a, b);
+    /* Invokes to calculadora function and it writes inside screenH */
+    subScreenH.innerHTML = "";
+    operH.innerHTML = "";
+    /* It resets content of subScreenH and operH */
 }
 
 function reset() {
-    screenObj.innerHTML = "0";
-    subScreenObj.innerHTML = "";
-    operObj.innerHTML = "";
+    screenH.innerHTML = "0";
+    subScreenH.innerHTML = "";
+    operH.innerHTML = "";
+    /* It resets everything to default values  */
 }
 
 function backdel() {
-    if (screenObj.innerHTML.length <= 1) {
-        screenObj.innerHTML = "0";
+    /* It deletes last character inside screenH unless it rests only one. In that case it resets to 0 */
+    if (screenH.innerHTML.length <= 1) {
+        screenH.innerHTML = "0";
     } else {
-        screenObj.innerHTML = screenObj.innerHTML.substring(0, screenObj.innerHTML.length - 1);
+        screenH.innerHTML = screenH.innerHTML.substring(0, screenH.innerHTML.length - 1);
     }
 }
 
-
 function invSign() {
-    screenObj.innerHTML=-1*screenObj.innerHTML;
+    screenH.innerHTML=-1*screenH.innerHTML;
+    /* It toggles sign of screenH annotation */
 }
 
+// ADDEVENT LISTENERS, TO AVOID INTRUSIVE Javascript inside HTML
 
-
-// ADDEVENT LISTENERS
-
-for (let i = 0; i < keyNum.length; i++) {
-    keyNum[i].addEventListener("click", function () {
-        annotate(keyNum[i].innerHTML);
+/* Iterates all numbers' keys to invoke its own specifical annotation */
+for (let i = 0; i < keyNumH.length; i++) {
+    keyNumH[i].addEventListener("click", function () {
+        annotate(keyNumH[i].innerHTML);
     });
 }
 
-keyDec.addEventListener("click", function () {
+/* Add a decimal dot at the end of annotation */
+keyDecH.addEventListener("click", function () {
     addDot();
 });
 
-for (let i = 0; i < keyOpe.length; i++) {
-    keyOpe[i].addEventListener("click", function () {
-        preservAnot(keyOpe[i].innerHTML);
+/* Iterates by all operators keys and asigns its own
+eventlistener with its own invocation to preservOpe to annotate operation
+*/
+for (let i = 0; i < keyOpeH.length; i++) {
+    keyOpeH[i].addEventListener("click", function () {
+        preservOpe(keyOpeH[i].innerHTML);
     });
 }
 
-ecuObj.addEventListener("click", function () {
+/* To get the result */
+ecuH.addEventListener("click", function () {
     resultat();
 });
 
-cleanObj.addEventListener("click", function () {
+/* To reset everything  */
+cleanH.addEventListener("click", function () {
     reset();
 });
 
-backObj.addEventListener("click", function () {
+/* To delete last character */
+backH.addEventListener("click", function () {
     backdel();
 });
 
-invObj.addEventListener("click", function () {
+/* To invert sign */
+invH.addEventListener("click", function () {
     invSign();
 });
