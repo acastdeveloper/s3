@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+
 
     <!-- SEO -->
     <title>Exercici 3</title>
@@ -19,7 +21,11 @@
 
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./css/roboto-mono.min.css">
+
+    <!-- FONT AWESOME -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
     <link rel="stylesheet" href="./css/calculadora.css">
@@ -28,36 +34,43 @@
 <body>
     <div id="teclat" class="container">
         <div class="row">
-            <div class="screen" id="pantalla">0</div>
+            <div id="preserv">
+                <span id="subpantalla">0</span>
+                <span id="oper"></span>
+            </div>
+            <div>
+                <span class="screen" id="pantalla">0</span>
+                <i class="material-icons" id="backspace">backspace</i>
+            </div>
         </div>
         <div class="row cols25">
-            <button class="col">9</button>
-            <button class="col">8</button>
-            <button class="col">7</button>
+            <button class="col coln">7</button>
+            <button class="col coln">8</button>
+            <button class="col coln">9</button>
             <button class="col ope">+</button>
         </div>
         <div class="row cols25">
-            <button class="col">6</button>
-            <button class="col">5</button>
-            <button class="col">4</button>
+            <button class="col coln">4</button>
+            <button class="col coln">5</button>
+            <button class="col coln">6</button>
             <button class="col ope">-</button>
         </div>
         <div class="row cols25">
-            <button class="col">3</button>
-            <button class="col">2</button>
-            <button class="col">1</button>
+            <button class="col coln">1</button>
+            <button class="col coln">2</button>
+            <button class="col coln">3</button>
             <button class="col ope">*</button>
         </div>
         <div class="row cols50">
-            <button class="col">±</button>
-            <button class="col">0</button>
-            <button class="col">,</button>
+            <button class="col" id="inv">±</button>
+            <button class="col coln">0</button>
+            <button class="col" id="deci">.</button>
             <button class="col ope">/</button>
         </div>
         <div>
             <div class="row cols25">
-                <button class="col col--del">C</button>
-                <button class="col col--equ">=</button>
+                <button class="col col--del" id="clean">C</button>
+                <button class="col col--equ" id="equ">=</button>
             </div>
         </div>
     </div>

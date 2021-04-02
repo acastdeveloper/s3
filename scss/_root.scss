@@ -3,5 +3,17 @@
 /** ROOT */
 
 :root {
+    /* TIPO */
     --font-mono:#{$font-family-monospace};
+    /* COLOR */
+    --color0:#{$color0};
+    --color1:#{$color1};
+    --color1h:#{$color1h};
+    --color2:#{$color2};
+    --color2h:#{$color2h};
+    --color3:#{$color3};
+    --color3h:#{$color3h};
+    --color4:#{$color4};
+    --color4h:#{$color4h};
+
 }
