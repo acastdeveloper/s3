@@ -15,17 +15,46 @@
 }
 
 /** TIPOGRAFIA */
-#teclat, #teclat .row > button {
+body {
+  font-size: 16px;
+}
+
+#teclat,
+#teclat .row > button {
   font-family: "Roboto Mono", monospace;
-  font-size: 5vh;
+  font-size: 2rem;
 }
 
 #pantalla {
-  font-size: 7vh;
+  font-size: 3.3rem;
+  overflow-wrap: break-word;
   text-align: right;
 }
 
+#preserv {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+@media (max-width: 768px) {
+  #pantalla {
+    font-size: 3.3rem;
+    overflow-wrap: break-word;
+    text-align: right;
+  }
+}
+@media (max-width: 575px) {
+  #pantalla {
+    font-size: 9vw;
+    overflow-wrap: break-word;
+    text-align: right;
+  }
+}
 /** COLOR */
+body {
+  background: #666;
+}
+
 .col {
   background: #a5b1c2;
 }
@@ -57,11 +86,28 @@
   background: #26de81;
 }
 
+#teclat {
+  background: whitesmoke;
+}
+
+#extrapantalla {
+  background: white;
+}
+
 /** SHAPE */
 button {
   border: 0;
   border-radius: 1rem;
   outline: none;
+}
+
+#teclat {
+  box-shadow: 0 0 1rem 1rem #33333333;
+  border-radius: 0.25rem;
+}
+
+#backspace {
+  cursor: pointer;
 }
 
 /** ESTRUCTURA */
@@ -106,10 +152,23 @@ body {
   text-align: center;
 }
 
+#preserv {
+  width: 100%;
+  padding: 0.25rem 0.25rem;
+}
+
+#extrapantalla {
+  flex-grow: 2;
+  flex-shrink: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 #pantalla {
-  flex-basis: 100%;
+  width: calc(95%);
   align-self: center;
-  padding: 2rem 1rem;
 }
 
 button.col {
@@ -119,8 +178,8 @@ button.col {
 
 #teclat {
   margin: auto;
-  min-width: 320px;
   max-width: 575px;
+  min-height: 100vh;
 }
 
 /*# sourceMappingURL=calculadora.css.map */

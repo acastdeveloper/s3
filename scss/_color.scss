@@ -1,5 +1,10 @@
 /** COLOR */
 
+body {
+    background: #666;
+}
+
+
 .col {
     background: #{$color1};
     &:active {
@@ -29,4 +34,13 @@
     &:active {
     background: #{$color3h};
 }
+}
+
+
+#teclat {
+    background: whitesmoke;
+}
+
+#extrapantalla {
+    background: white;
 }

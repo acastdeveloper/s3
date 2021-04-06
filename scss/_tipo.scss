@@ -1,11 +1,52 @@
 /** TIPOGRAFIA */
-#teclat, #teclat .row>button {
+
+body {
+    font-size: 16px;
+}
+
+#teclat,
+#teclat .row>button {
     font-family: $font-family-monospace;
-    font-size: 5vh;
+    font-size: 2rem;
 }
 
 
 #pantalla {
-    font-size: 7vh;
+    font-size: 3.3rem;
+    overflow-wrap: break-word;
     text-align: right;
+}
+
+#preserv {
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+
+// @media (max-width:575px) {
+//     #pantalla {
+//         font-size: 2rem;
+//     }
+// }
+
+
+
+@media (max-width:768px) {
+
+    #pantalla {
+        font-size: 3.3rem;
+        overflow-wrap: break-word;
+        text-align: right;
     }
+
+}
+
+@media (max-width:575px) {
+
+    #pantalla {
+        font-size: 9vw;
+        overflow-wrap: break-word;
+        text-align: right;
+    }
+
+}

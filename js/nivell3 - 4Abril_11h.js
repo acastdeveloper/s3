@@ -11,54 +11,50 @@ const backH = document.getElementById("backspace");
 const invH = document.getElementById("inv");
 
 // Temporary numeric annotation, as a number
-let memHide = 0;
-let memHide2 = 0;
+let memScreen = 0;
 
-// Function write() writes on screen area
+// Function write()
 function write(that) {
     screenH.innerHTML = that;
 }
 
-function write2(questo) {
-    subScreenH.innerHTML = questo;
-}
+
 
 
 // Annotate function
 function annotate(what) {
     /*Avaluates HTML content of screenH when is invoked*/
-    let screenVal = memHide;
+    let screenVal = screenH.innerHTML;
 
-    if (screenVal == "0") {
-        memHide = what;
-        /* To avoid that a non decimal number starts with "0",
+    if (screenVal === "0") {
+        memScreen = what;
+        /* To avoid that a non decimal number starts with 0,
         content is replaced by what */
     } else {
-        memHide = screenVal + what;
-        /* otherwise "what" parameter is chained to the end */
+        memScreen = screenVal + what;
+        /* otherwise "what" parameter is chained at the end */
     }
-    write(memHide);
+    write(memScreen);
 }
 
 // Adding dot function
 function addDot() {
-    let screenVal = memHide;
+    let screenVal = screenH.innerHTML;
     /* Avaluates content of screenH when this function is invoked */
     if (screenVal.indexOf(".") == -1) {
         /* Only if it doesn't exist a dot inside the string ... */
-        memHide = screenVal + ".";
+        memScreen = screenVal + ".";
+        screenH.innerHTML = memScreen;
+        // screenH.innerHTML = screenVal + ".";
         /* ... will add a dot at the end */
     }
-    write(memHide);
 }
 
 // Preserve 1st annotation inside subScreenH
 function preservOpe(opP) {
-    let screenVal = memHide;
+    let screenVal = screenH.innerHTML;
     /* Avaluates content of screenH when this function is invoked */
-    memHide2 = memHide;
-    write2(memHide2);
-
+    subScreenH.innerHTML = screenVal;
     /* Makes a copy inside subScreenH */
     screenH.innerHTML = 0;
     /* Reset screenH content */
