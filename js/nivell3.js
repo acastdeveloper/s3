@@ -2,6 +2,7 @@
 const keyNumH = document.getElementsByClassName("coln");
 const keyOpeH = document.getElementsByClassName("ope");
 const keyDecH = document.getElementById("deci");
+const extraScreenH = document.getElementById("extrapantalla");
 const screenH = document.getElementById("pantalla");
 const subScreenH = document.getElementById("subpantalla");
 const operH = document.getElementById("oper");
@@ -10,57 +11,68 @@ const cleanH = document.getElementById("clean");
 const backH = document.getElementById("backspace");
 const invH = document.getElementById("inv");
 
-// Temporary numeric annotation, as a number
-let memHide = 0;
-let memHide2 = 0;
+// TEMPORARY MEMORY PLACES
+let mem1 = 0;
+let mem2 = 0;
 
-// Function write() writes on screen area
+//write on screenH after process, or not, that
 function write(that) {
-    screenH.innerHTML = that;
+// let wD=extraScreenH.clientWidth;
+// let wB = backH.clientWidth;
+// let wS = screenH.clientWidth;
+// console.log(wD);
+// console.log(wB);
+// console.log(wS);
+
+screenH.innerHTML = that;
+
+    if (that.length <= 10) {
+        screenH.innerHTML = that;
+    }
+    else {
+        let mostrar = Number(that).toExponential(10);
+        screenH.innerHTML = mostrar;
+    }
 }
 
-function write2(questo) {
-    subScreenH.innerHTML = questo;
+//write on subScreenH after process, or not, that
+function write2(that) {
+    subScreenH.innerHTML = that;
 }
-
 
 // Annotate function
 function annotate(what) {
-    /*Avaluates HTML content of screenH when is invoked*/
-    let screenVal = memHide;
+    let screenVal = mem1;
 
     if (screenVal == "0") {
-        memHide = what;
-        /* To avoid that a non decimal number starts with "0",
-        content is replaced by what */
+        mem1 = what;
     } else {
-        memHide = screenVal + what;
-        /* otherwise "what" parameter is chained to the end */
+        mem1 = screenVal + what;
     }
-    write(memHide);
+    write(mem1);
 }
 
 // Adding dot function
 function addDot() {
-    let screenVal = memHide;
+    let screenVal = mem1;
     /* Avaluates content of screenH when this function is invoked */
     if (screenVal.indexOf(".") == -1) {
         /* Only if it doesn't exist a dot inside the string ... */
-        memHide = screenVal + ".";
+        mem1 = screenVal + ".";
         /* ... will add a dot at the end */
     }
-    write(memHide);
+    write(mem1);
 }
 
 // Preserve 1st annotation inside subScreenH
 function preservOpe(opP) {
-    let screenVal = memHide;
+    let screenVal = mem1;
     /* Avaluates content of screenH when this function is invoked */
-    memHide2 = memHide;
-    write2(memHide2);
+    mem2 = mem1;
+    mem1 = "0";
+    write2(mem2);
+    write(mem1);
 
-    /* Makes a copy inside subScreenH */
-    screenH.innerHTML = 0;
     /* Reset screenH content */
     operH.innerHTML = opP;
     /* Annotates also operator inside operH */
@@ -72,7 +84,7 @@ function calculadora(operacio, a, b) {
 
     switch (operacio) {
         case "+":
-            r = a + b;
+            r = Number(a) + Number(b);
             break;
         case "-":
             r = a - b;
@@ -94,8 +106,8 @@ function calculadora(operacio, a, b) {
 // It reads all the annotations and invoke to calculadora()
 function resultat() {
     let o = operH.innerHTML;
-    let a = Number(subScreenH.innerHTML);
-    let b = Number(screenH.innerHTML);
+    let a = mem2;
+    let b = mem1;
     /* It avaluates all the content keeped inside tags and asign to these variables */
 
     screenH.innerHTML = calculadora(o, a, b);
@@ -108,25 +120,34 @@ function resultat() {
 function reset() {
     screenH.innerHTML = "0";
     subScreenH.innerHTML = "";
+    mem1 = 0;
+    mem2 = 0;
     operH.innerHTML = "";
     /* It resets everything to default values  */
 }
 
-function backdel() {
-    /* It deletes last character inside screenH unless it rests only one. In that case it resets to 0 */
-    if (screenH.innerHTML.length <= 1) {
-        screenH.innerHTML = "0";
-    } else {
-        screenH.innerHTML = screenH.innerHTML.substring(0, screenH.innerHTML.length - 1);
-    }
-}
-
 function invSign() {
-    screenH.innerHTML = -1 * screenH.innerHTML;
+    mem1=(-1*mem1-0).toString().replace(",",".");
+    write(mem1);
     /* It toggles sign of screenH annotation */
 }
 
-// ADDEVENT LISTENERS, TO AVOID INTRUSIVE Javascript inside HTML
+function backdel() {
+    /* It deletes last character inside screenH unless it rests only one. In that case it resets to 0 */
+    if (mem1.length <= 1) {
+        mem1="0";
+    } else {
+        mem1 = mem1.substring(0, mem1.length - 1);
+    }
+    write(mem1);
+}
+
+/*
+ * *************************************************************
+ * ADDEVENT LISTENERS, TO AVOID INTRUSIVE Javascript inside HTML
+ * *************************************************************
+ */
+
 
 /* Iterates all numbers' keys to invoke its own specifical annotation */
 for (let i = 0; i < keyNumH.length; i++) {
@@ -159,12 +180,12 @@ cleanH.addEventListener("click", function () {
     reset();
 });
 
-/* To delete last character */
-backH.addEventListener("click", function () {
-    backdel();
-});
-
 /* To invert sign */
 invH.addEventListener("click", function () {
     invSign();
+});
+
+/* To delete last character */
+backH.addEventListener("click", function () {
+    backdel();
 });
