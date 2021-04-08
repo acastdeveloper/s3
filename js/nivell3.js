@@ -17,13 +17,6 @@ let mem2 = 0;
 
 //write on screenH after process, or not, that
 function write(that) {
-// let wD=extraScreenH.clientWidth;
-// let wB = backH.clientWidth;
-// let wS = screenH.clientWidth;
-// console.log(wD);
-// console.log(wB);
-// console.log(wS);
-
 screenH.innerHTML = that;
 
     if (that.length <= 10) {
@@ -112,14 +105,14 @@ function resultat() {
 
     screenH.innerHTML = calculadora(o, a, b);
     /* Invokes to calculadora function and it writes inside screenH */
-    subScreenH.innerHTML = "";
+    subScreenH.innerHTML = "0";
     operH.innerHTML = "";
     /* It resets content of subScreenH and operH */
 }
 
 function reset() {
     screenH.innerHTML = "0";
-    subScreenH.innerHTML = "";
+    subScreenH.innerHTML = "0";
     mem1 = 0;
     mem2 = 0;
     operH.innerHTML = "";

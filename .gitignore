@@ -8,6 +8,9 @@ IGNORAR/
 #############
 *.code-workspace
 
+# htaccess
+.htaccess
+
 # Compiled source #
 ###################
 *.com

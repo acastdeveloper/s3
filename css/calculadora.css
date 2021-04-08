@@ -171,6 +171,10 @@ body {
   align-self: center;
 }
 
+#subpantalla {
+  height: 1rem;
+}
+
 button.col {
   padding: 3vh 2vh;
   margin: 1vh;
