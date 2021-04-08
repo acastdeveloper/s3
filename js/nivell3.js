@@ -37,7 +37,7 @@ function write2(that) {
 function annotate(what) {
     let screenVal = mem1;
 
-    if (screenVal == "0") {
+    if (screenVal == "0" || opP=="" ) {
         mem1 = what;
     } else {
         mem1 = screenVal + what;
